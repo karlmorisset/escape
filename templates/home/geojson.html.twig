@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+
+    <style>
+        #map { height: 500px; }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
+{% block body %}
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+
+
+
+    <script>
+        let geoJson = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [
+                                [
+                                    4.0752410888671875,
+                                    48.295985271707636
+                                ],
+                                [
+                                    3.692264556884765,
+                                    43.40155538353331
+                                ],
+                                [
+                                    11.125717163085938,
+                                    46.066620840659915
+                                ],
+                                [
+                                    -0.087890625,
+                                    46.22545288226939
+                                ],
+                                [
+                                    10.3271484375,
+                                    43.16512263158296
+                                ],
+                                [
+                                    4.0752410888671875,
+                                    48.295985271707636
+                                ]
+                            ]
+                        ]
+                    }
+                }
+            ]
+        }
+
+        let layer = L.geoJSON(geoJson)
+
+        var map = L.map('map', {
+            center: [46.066, 11.125],
+            zoom: 6,
+            layers: layer
+        });
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+
+        {# Les 3 points désignent 3 villes : Troyes = 3, Sète = 7, Trento = 30 #}
+        {# La formule dit 3 + 7 * 30 = 213 #}
+
+    </script>
+
+{% endblock %}
+
+
+
+

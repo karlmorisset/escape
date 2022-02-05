@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block stylesheets %}
+    <style>
+        img{
+            display: block;
+            margin: 0;
+            padding: 0
+        }
+
+        .container{
+            display: flex;
+            width: 550px;
+            flex-wrap: wrap;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        {% for x in 0..224 %}
+            <img src="https://escape.harari.ovh/build/images/split/{{chunks[x]}}.png">
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+
+
