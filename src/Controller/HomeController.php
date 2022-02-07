@@ -41,7 +41,9 @@ class HomeController extends AbstractController
     #[Route('/ch2', name: 'ch2')]
     public function ch2(): Response
     {
-        return new Response(chr(75).chr(78).chr(79).chr(67).chr(75));
+        return $this->render('home/ch2.html.twig', [
+            'code' => chr(75).chr(78).chr(79).chr(67).chr(75),
+        ]);
     }
 
 
