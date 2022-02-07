@@ -15,6 +15,12 @@ class HomeController extends AbstractController
 
     public $str3 = ".'..p..e..u..v..s..'..c..e..z..e..e..a.....d.....i..j..d..a.....a..u..r..n..t..a.....n..d..t..l..é..v..t..e..o.....n..e..u.....s.....a.....f..r.....s..o.....r..u.....s..o.....r..i..e.....e..i..u..s..m..l..i..s..r..e..l..e..j..s..s..o..o..r..s..t..d.....r..o.....o..d..p..s..n.....e..é..m..t..s..n..d..à..i..a........t..i..l..e.....m..é..a........l.....a..a..r..B..h.....a..i..e.....e..'..e..m..i..r..e..u..c.....j..t..ê..e..l.....t..a.....b.....e..e..e........r..p..s..c........a..p........e..e.....i..j..s..s..e..u..é..u..d.....r..s..é..l..r.....i..é..s..n..d..l..n..o..e..n..n..m..t..o.....x..o..a..e...........i..p.....e..p..t..l..y..i..e..l..s..t..r..v.....r..o..e..e..e..n..d..u.....m..e..d..t..p.....i..l..r..u..s..c..s..r..a..,..'..s..u..p..m..n..s..I..f..t..g..,..a.....r..r..V..r..e..é..e..e..n..e..o..i.....e.....u..à..a..e..v..s..e.....u..z..'..d.....r..r..v........u..r..a..i..e..P..t..t.....u..e..v..s..'..d.....a..m..t..m..e..i..e..e..e..u..l..s..d..à..r.....r..p..r..o.....t..u..z..o..c..s..r..u..a..i..d..n..m..t..e..j..v..s..x..i..e..i..o........e..e..a.....e..a..e..c..f..n.....p..s..n...r..e..e.....l..r..t";
 
+    #[Route('/', name: 'index')]
+    public function index(): Response
+    {
+        return $this->render('home/index.html.twig');
+    }
+
     #[Route('/ch1', name: 'ch1')]
     public function ch1(): Response
     {
@@ -27,7 +33,7 @@ class HomeController extends AbstractController
             $msg .= mb_substr($this->str3, $i, 1, "UTF-8") != "." ? mb_substr($this->str3, $i, 1, "UTF-8") : "";
         }
 
-        return $this->render('home/index.html.twig', [
+        return $this->render('home/ch1.html.twig', [
             'msg' => $msg,
         ]);
     }
@@ -39,7 +45,7 @@ class HomeController extends AbstractController
     }
 
 
-    #[Route('/ch3-4', name: 'ch3-4')]
+    #[Route('/ch34', name: 'ch34')]
     public function ch34(): Response
     {
         $chunks = [
@@ -269,7 +275,6 @@ class HomeController extends AbstractController
             "5e2e1449bcfbb",
             "5e2e1449bcbfd",
         ];
-
 
         return $this->render('home/34.html.twig', [
             'chunks' => $chunks

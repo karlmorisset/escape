@@ -3,15 +3,9 @@
 {% block title %}{% endblock %}
 {% block stylesheets %}
     <style>
-        img{
-            display: block;
-            margin: 0;
-            padding: 0
-        }
-
-        .container{
+        .qrcode{
             display: flex;
-            width: 550px;
+            width: calc(36px * 15);
             flex-wrap: wrap;
         }
     </style>
@@ -19,7 +13,7 @@
 
 {% block body %}
 
-    <div class="container">
+    <div class="qrcode">
         {% for x in 0..224 %}
             <img src="https://escape.harari.ovh/build/images/split/{{chunks[x]}}.png">
         {% endfor %}
