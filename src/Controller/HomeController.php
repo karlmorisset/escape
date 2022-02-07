@@ -282,4 +282,43 @@ class HomeController extends AbstractController
     {
         return $this->render('home/geojson.html.twig');
     }
+
+    #[Route('/ch53', name: 'ch53')]
+    public function ch53(): Response
+    {
+        $phrases = [
+            "Iehhajwena lneokjjean z'qja rehha ajchkqpea",
+            "Qj Zeaq wq hkjc okiiaeh raqp oknpen za h'kqxhe",
+            "Owqnav rkqo h'ailaydan, z'qja okixna iwcea ?",
+            "Lnkpacawjp jko ykjoeajya z'ajpnan zwjo hw bkhea.",
+            "Eh bkiajpa lwpeaiajp zao zaooaejo ejokjzwxhao",
+            "Iajwywjp jko nweokjo z'qja bkhea ejjkiwxha",
+            "Ailaydav ha ! Ykiiajp ? Hw bkniqha aop ywydaa",
+            "Napnkqrav rko aolnepo ap lwnpav ha zabean !",
+            "Kd ! Oknpehaca eilea mqe rw ya Zeaq pqav",
+            "Hexanwjp jkpna Panna, owqrwjp h'dqiwjepa"
+        ];
+
+        $message = "";
+
+        foreach ($phrases as $p) {
+            $message .= substr($this->caesar($p, 4), 0, 1);
+        }
+
+        $message = strrev($message);
+
+        return $this->render('home/caesar.html.twig', ["message" => $message]);
+    }
+
+
+    public function caesar($phrase, $shift)
+    {
+        $characters = str_split($phrase);
+
+        foreach($characters as $key => $c){
+            $characters[$key] = chr(ord($c) + $shift);
+        }
+
+        return implode("", $characters);
+    }
 }
